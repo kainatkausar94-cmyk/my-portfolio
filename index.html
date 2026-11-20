@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+
+    <style>
+        /* BASIC SETTINGS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5ff;
+            color: #252545;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px #00000010;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6c4ce3;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #7856e8;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+            color: white;
+            background: linear-gradient(135deg, #6545dc, #3286db);
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            background: white;
+            color: #6545dc;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            background: #eeeaff;
+        }
+
+        /* GENERAL SECTIONS */
+        section {
+            padding: 75px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            color: #6545dc;
+            margin-bottom: 35px;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* SKILLS SECTION */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px 15px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #00000010;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px #6545dc30;
+        }
+
+        .skill-card h3 {
+            color: #6545dc;
+            margin-bottom: 10px;
+        }
+
+        .skill-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        /* PROJECTS SECTION */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #00000010;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-card h3 {
+            color: #6545dc;
+            margin-bottom: 12px;
+        }
+
+        /* GOALS SECTION */
+        .goals {
+            text-align: center;
+            background: linear-gradient(135deg, #6545dc, #3286db);
+            color: white;
+        }
+
+        .goals h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .goals p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 13px 30px;
+            background: #6545dc;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #3286db;
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #252545;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        /* ANIMATION */
+        .hero-content {
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 6%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div class="logo">My Portfolio</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+
+            <h2>Hello, Welcome to My Portfolio!</h2>
+
+            <h1>Your Name</h1>
+
+            <h2>Student & Future Professional</h2>
+
+            <p>
+                I am a passionate student learning computer skills,
+                graphic design and modern technology.
+                I believe in continuous learning and growth.
+            </p>
+
+            <a href="#contact" class="btn">Contact Me</a>
+
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <p>
+            My name is Your Name. I am a student interested in
+            computers, technology and digital creativity.
+            I am continuously improving my knowledge and skills
+            to prepare myself for a successful professional career.
+            I enjoy learning new things and working on creative projects.
+        </p>
+
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills">
+
+        <h2 class="section-title">My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Basic Computer</h3>
+                <p>Computer fundamentals and internet usage.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>MS Office</h3>
+                <p>Working with Word, Excel and PowerPoint.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <h3>Graphic Design</h3>
+                <p>Creating attractive and creative designs.</p>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🤝</div>
+                <h3>Communication</h3>
+                <p>Teamwork and effective communication.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+
+        <h2 class="section-title">My Projects</h2>
+
+        <div class="projects-container">
+
+            <div class="project-card">
+                <h3>Project 01</h3>
+                <p>
+                    Created a professional document using
+                    Microsoft Word.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Project 02</h3>
+                <p>
+                    Designed a student result sheet using
+                    Microsoft Excel.
+                </p>
+            </div>
+
+            <div class="project-card">
+                <h3>Project 03</h3>
+                <p>
+                    Created a creative social media post
+                    using graphic design tools.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GOALS SECTION -->
+    <section class="goals">
+
+        <h2>My Future Goals</h2>
+
+        <p>
+            My goal is to learn modern technologies,
+            improve my professional skills, explore
+            new opportunities and become a successful
+            professional in the digital world.
+        </p>
+
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+
+        <h2 class="section-title">Contact Me</h2>
+
+        <p>I would love to connect and learn from others.</p>
+
+        <p>Feel free to get in touch with me!</p>
+
+        <a href="mailto:yourname@email.com" class="contact-btn">
+            Send Me an Email
+        </a>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>© 2026 Your Name | All Rights Reserved</p>
+
+        <p>Designed with ❤️ using HTML & CSS</p>
+
+    </footer>
+
+</body>
+</html>
